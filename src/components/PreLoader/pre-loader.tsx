@@ -100,7 +100,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           <div className="loader-2 bar"></div>
           <div className="loader-3 bar"></div>
         </div>
-        <div className="counter">
+        <div className="counter font-playfair">
           <div className="counter-1 digit">
             <div className="num">0</div>
             <div className="num num1offset1">1</div>

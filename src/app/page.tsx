@@ -1,6 +1,7 @@
 "use client";
 
-import Preloader from "@/components/pre-loader";
+import Navbar from "@/components/Navbar/navbar";
+import Preloader from "@/components/PreLoader/pre-loader";
 import { useState } from "react";
 
 export default function Home() {
@@ -10,18 +11,19 @@ export default function Home() {
     <>
       {loading && <Preloader onComplete={() => setLoading(false)} />}
       {!loading && (
-        <main className="h-screen w-screen bg-gradient-to-tr from-gray-900 via-black to-gray-800 text-white flex flex-col items-center justify-center px-6">
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-center">
-            Welcome to Our Space
-          </h1>
-          <p className="text-lg md:text-2xl text-gray-300 mb-8 text-center max-w-2xl">
-            Designing experiences that blend architecture, creativity, and
-            technology.
-          </p>
-          <button className="px-6 py-3 bg-white text-black rounded-full font-semibold shadow-lg hover:scale-105 transition-transform">
-            Explore More
-          </button>
-        </main>
+        <>
+          <Navbar />
+          <main className="bg-white">
+            <section
+              id="home"
+              className="relative min-h-screen flex items-center justify-center px-4 sm:px-6"
+            >
+              <h1 className="text-4xl font-bold text-black font-playfair">
+                Blush & Hush
+              </h1>
+            </section>
+          </main>
+        </>
       )}
     </>
   );
