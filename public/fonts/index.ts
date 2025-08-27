@@ -4,3 +4,8 @@ export const tanHeadline = localFont({
   src: "./tanheadline-regular-webfont.woff2",
   variable: "--font-tan-headline",
 });
+
+export const schabo = localFont({
+  src: "./SCHABO-Condensed.woff",
+  variable: "--font-schabo",
+});

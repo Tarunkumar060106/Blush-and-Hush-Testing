@@ -71,7 +71,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     // loader transforms – synced with "<"
     tl.to(".loader-1", { rotate: 90, y: -50, duration: 0.5 }, 6);
     tl.to(".loader-2", { x: -125, y: -50, duration: 0.5 }, "<");
-    tl.to(".loader-3", { rotate: 90, x: -155, y: 29, duration: 0.5 }, "<");
+    tl.to(".loader-3", { rotate: 90, x: -158, y: 29, duration: 0.5 }, "<");
 
     // scale up + move out
     tl.to(".loader", { scale: 20, duration: 1, ease: "power2.inOut" }, 7);

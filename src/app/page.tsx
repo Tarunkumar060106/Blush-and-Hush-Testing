@@ -13,7 +13,7 @@ export default function Home() {
       {!loading && (
         <>
           <Navbar />
-          <main className="bg-white">
+          <main className="bg-[#f0f1fa]">
             <section
               id="home"
               className="relative min-h-screen flex items-center justify-center px-4 sm:px-6"
