@@ -3,6 +3,7 @@ import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { tanHeadline } from "../../public/fonts";
 import { cn } from "@/lib/utils";
+import Navbar from "@/components/Navbar/navbar";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
