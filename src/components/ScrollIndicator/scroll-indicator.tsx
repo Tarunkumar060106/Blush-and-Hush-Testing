@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 const ScrollIndicator = () => {
   const [scrollThumb, setScrollThumb] = useState(0);
   const [trackHeight, setTrackHeight] = useState(0);
+  const [isActive, setIsActive] = useState(true); // visibility state
 
   const thumbHeight = 40; // fixed thumb size (px)
+  let scrollTimeout: NodeJS.Timeout;
 
   useEffect(() => {
     // Function to recalc track height on resize
@@ -25,6 +27,15 @@ const ScrollIndicator = () => {
       const maxMove = trackHeight - thumbHeight;
 
       setScrollThumb(progress * maxMove);
+
+      // show indicator on scroll
+      setIsActive(true);
+
+      // clear old timeout & set new one
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsActive(false);
+      }, 2000); // 2s delay
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -32,16 +43,18 @@ const ScrollIndicator = () => {
     return () => {
       window.removeEventListener("resize", updateTrackHeight);
       window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
     };
   }, [trackHeight]);
 
   return (
     <div
       id="scroll-indicator"
-      className="fixed right-4 top-1/2 -translate-y-1/2 w-[6px] sm:w-[8px] rounded-full"
+      className={`fixed right-4 top-1/2 -translate-y-1/2 md:w-[4.5px] sm:w-[3px] rounded-full transition-opacity duration-500`}
       style={{
         height: `${trackHeight}px`,
-        backgroundColor: "rgba(65, 63, 63, 0.4)", // semi-transparent track
+        backgroundColor: "rgba(65, 63, 63, 0.4)",
+        opacity: isActive ? 1 : 0, // fade in/out
       }}
     >
       <div
@@ -50,7 +63,7 @@ const ScrollIndicator = () => {
         style={{
           height: `${thumbHeight}px`,
           transform: `translateY(${scrollThumb}px)`,
-          backgroundColor: "rgba(0,0,0,0.8)", // black with opacity
+          backgroundColor: "#0CAC8A",
         }}
       ></div>
     </div>
