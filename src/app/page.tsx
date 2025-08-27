@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar/navbar";
 import Preloader from "@/components/PreLoader/pre-loader";
+import ScrollIndicator from "@/components/ScrollIndicator/scroll-indicator";
 import { useState } from "react";
 
 export default function Home() {
@@ -12,8 +13,25 @@ export default function Home() {
       {loading && <Preloader onComplete={() => setLoading(false)} />}
       {!loading && (
         <>
+          <ScrollIndicator />
           <Navbar />
           <main className="bg-[#f0f1fa]">
+            <section
+              id="home"
+              className="relative min-h-screen flex items-center justify-center px-4 sm:px-6"
+            >
+              <h1 className="text-4xl font-bold text-black font-playfair">
+                Blush & Hush
+              </h1>
+            </section>
+            <section
+              id="home"
+              className="relative min-h-screen flex items-center justify-center px-4 sm:px-6"
+            >
+              <h1 className="text-4xl font-bold text-black font-playfair">
+                Blush & Hush
+              </h1>
+            </section>
             <section
               id="home"
               className="relative min-h-screen flex items-center justify-center px-4 sm:px-6"
