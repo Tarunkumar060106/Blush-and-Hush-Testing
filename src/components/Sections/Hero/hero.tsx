@@ -40,7 +40,9 @@ const Hero = () => {
           <div className="line">and build environments that</div>
           <div className="line">reflect your vision</div>
         </h1>
-        <div className="hero-visual-container"></div>
+        <div className="visual-wrapper">
+          <div className="hero-visual-container"></div>
+        </div>
         <div className="home-hero-scroll-container">
           <div className="home-hero-scroll-track">
             <div className="cross">✕</div>
