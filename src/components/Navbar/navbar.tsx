@@ -5,9 +5,11 @@ import Image from "next/image";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 import "./styles.css";
+import { splitTextIntoSpans } from "@/lib/utils";
 
 export default function Navbar() {
   const [currentImage, setCurrentImage] = useState(0);
+  const [hovered, setHovered] = useState(false);
 
   const images = [
     "/images/logos/blush-commercial.png",
@@ -35,18 +37,20 @@ export default function Navbar() {
     let isAnimating = false;
 
     // Split text function
-    const splitTextIntoSpans = (selector: string) => {
-      document.querySelectorAll(selector).forEach((element) => {
-        const text = element.textContent || "";
-        const splitText = text
-          .split("")
-          .map((char) => `<span>${char === " " ? "&nbsp;&nbsp;" : char}</span>`)
-          .join("");
-        element.innerHTML = splitText;
-      });
-    };
-
     splitTextIntoSpans(".header h1");
+
+    gsap.fromTo(
+      [".cta-btn", ".menu-toggle"],
+      { y: 40, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        ease: "power3.out",
+        duration: 1,
+        delay: 1,
+        stagger: 0.1,
+      }
+    );
 
     const handleToggle = () => {
       if (isAnimating) return;
@@ -154,7 +158,8 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">
+      {/* Logo */}
+      <div className="nav-logo">
         <a href="#home">
           <Image
             src={images[currentImage]}
@@ -164,16 +169,54 @@ export default function Navbar() {
           />
         </a>
       </div>
+
+      {/* CTA BTN */}
+      <div className="cta">
+        <button
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className="cta-btn"
+        >
+          <a href="mailto:contact@b&h.com"></a>
+          {/* Arrow (hidden by default) */}
+          <span className={`arrow ${hovered ? "show" : ""}`}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="none"
+              viewBox="0 0 16 16"
+            >
+              <path
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="M2.343 8h11.314m0 0-4.984 4.984M13.657 8 8.673 3.016"
+              ></path>
+            </svg>
+          </span>
+
+          {/* Text */}
+          <span className={`text ${hovered ? "shift" : ""}`}>Let's Talk</span>
+
+          {/* Dot */}
+          <span className={`dot ${hovered ? "hide" : ""}`}>
+            <div className="bg-[#0cac8a] rounded-full w-2.5 h-2.5"></div>
+          </span>
+        </button>
+      </div>
+
       {/* Toggle button */}
       <div className="menu-toggle closed">
+        <div className="menu-copy">
+          <p>Menu</p>
+        </div>
         <div className="menu-toggle-icon">
           <div className="hamburger">
             <div className="menu-bar" data-position="top"></div>
             <div className="menu-bar" data-position="bottom"></div>
           </div>
-        </div>
-        <div className="menu-copy">
-          <p>Menu</p>
         </div>
       </div>
 
@@ -205,9 +248,6 @@ export default function Navbar() {
             </div>
             <div className="link">
               <a href="#">About</a>
-            </div>
-            <div className="link">
-              <a href="#">Contact</a>
             </div>
           </div>
           <div className="video-wrapper">

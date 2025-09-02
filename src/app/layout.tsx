@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { tanHeadline } from "../../public/fonts";
+import { tanHeadline, schabo, aeonik } from "../../public/fonts";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/Navbar/navbar";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
@@ -26,7 +25,9 @@ export default function RootLayout({
         className={cn(
           "antialiased",
           tanHeadline.variable,
-          playfairDisplay.variable
+          playfairDisplay.variable,
+          schabo.variable,
+          aeonik.variable
         )}
       >
         {children}

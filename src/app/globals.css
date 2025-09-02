@@ -24,6 +24,7 @@ body {
   --font-tan-headline: var(--font-tan-headline);
   --font-playfair: var(--font-playfair);
   --font-schabo: var(--font-schabo);
+  --font-aeonik: var(--font-aeonik);
 }
 
 @media (prefers-color-scheme: dark) {

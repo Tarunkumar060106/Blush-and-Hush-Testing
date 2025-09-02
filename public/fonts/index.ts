@@ -9,3 +9,8 @@ export const schabo = localFont({
   src: "./SCHABO-Condensed.woff",
   variable: "--font-schabo",
 });
+
+export const aeonik = localFont({
+  src: "./Aeonik-Regular.woff2",
+  variable: "--font-aeonik",
+});
