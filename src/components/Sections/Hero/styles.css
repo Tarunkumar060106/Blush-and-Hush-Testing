@@ -50,14 +50,15 @@
 }
 
 .hero-visual-container {
-  grid-column: 2 / span 10;
+  /* grid-column: 2 / span 10; */
   margin-top: var(--base-padding-y);
   background: black;
   height: clamp(300px, 60vh, 550px); /* ⬅️ dynamic height */
   border-radius: 25px;
   z-index: 0;
-  width: 100%;
-  max-width: 1350px;
+
+  width: 1350px;
+  flex-shrink: 0;
 }
 .home-hero {
   display: grid; /* enable grid */
